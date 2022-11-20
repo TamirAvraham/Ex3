@@ -5,7 +5,9 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    int t = 9.999;
+    int te = (int)t;
+    std::cout << te;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

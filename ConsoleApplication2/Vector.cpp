@@ -30,13 +30,18 @@ void Vector::resize() {
 	_capacity += _resizeFactor;
 }
 void Vector::resize(int n){
-	while (_capacity>n)
+	int* temp = new int[_capacity + _resizeFactor*n];
+	for (int i = 0; i < _size; i++)
 	{
-		resize();
+		temp[i] = _elements[i];
 	}
+	delete[] _elements;
+	_elements = temp;
+	_capacity += _resizeFactor;
 }
 void Vector::reserve(int n) {
-	resize(n);
+	int numOfRefactor = (int)((n - _capacity) / _resizeFactor) + 1;//claclates how manty times to mull in resize(int) resize factor
+	resize(numOfRefactor);
 }
 void Vector::push_back(const int& val) {
 	if (_size == _capacity) 
