@@ -1,4 +1,5 @@
 #include "Vector.h"
+#include <iostream>
 int Vector::size()const {
 	return _size;
 }
@@ -30,17 +31,20 @@ void Vector::Resize() {
 	_capacity += _resizeFactor;
 }
 void Vector::Resize(int n){
-	int* temp = new int[_capacity + _resizeFactor*n];
-	for (int i = 0; i < _size; i++)
+	int diff = abs(_capacity + _resizeFactor * n);
+	int* temp = new int[diff];
+	int loopRunner = _size <= diff ? _size : diff;
+	for (int i = 0; i < loopRunner; i++)
 	{
 		temp[i] = _elements[i];
 	}
 	delete[] _elements;
+	_size = diff != 0 ? diff : _size;
 	_elements = temp;
-	_capacity += _resizeFactor*n;
+	_capacity =diff;
 }
 void Vector::reserve(int n) {
-	int numOfRefactor = ((n - _capacity) / _resizeFactor) + (n  % _resizeFactor==0?0:1);//claclates how manty times to mull in resize(int) resize factor
+	int numOfRefactor = abs(((n - _capacity) / _resizeFactor) + (n  % _resizeFactor==0?0:1));//claclates how manty times to mull in resize(int) resize factor
 	Resize(numOfRefactor);
 }
 void Vector::push_back(const int& val) {
@@ -55,5 +59,18 @@ int Vector::pop_back() {
 
 }
 void Vector::resize(int n) {
-
+	int diff = n - _capacity;
+	int carry = diff<0?-1:1;
+	int numOfRefactor = (diff / _resizeFactor) + (diff % _resizeFactor == 0 ? 0 : carry);
+	Resize(numOfRefactor);
+}
+void Vector::assign(int value) {
+	for (int i = 0; i < _size; i++)
+	{
+		_elements[i] = value;
+	}
+}
+void Vector::resize(int n,const int& val) {
+	resize(n);
+	assign(val);
 }

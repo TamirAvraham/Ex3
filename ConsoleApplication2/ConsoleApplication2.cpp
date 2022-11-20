@@ -8,7 +8,8 @@ int main()
     
     Vector vec(5);
     vec.reserve(13);
-    std::cout << vec.capacity();
+    vec.resize(9,8);
+    std::cout << vec.capacity()<<vec.size();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
