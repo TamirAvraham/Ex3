@@ -11,6 +11,7 @@ private:
 public:
 	Vector(int);
 	~Vector();
+	Vector(const Vector&);
 	int size()const;
 	int capacity()const;
 	bool empty()const;
@@ -20,6 +21,6 @@ public:
 	void resize(int);
 	void resize(int,const int&);
 	void assign(int);
-	
+	Vector operator =(const Vector&);
 };
 
