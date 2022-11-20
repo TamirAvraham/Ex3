@@ -2,12 +2,13 @@
 //
 
 #include <iostream>
-
+#include "Vector.h"
 int main()
 {
-    int t = 9.999;
-    int te = (int)t;
-    std::cout << te;
+    
+    Vector vec(5);
+    vec.reserve(13);
+    std::cout << vec.capacity();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

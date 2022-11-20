@@ -40,7 +40,7 @@ void Vector::Resize(int n){
 	_capacity += _resizeFactor*n;
 }
 void Vector::reserve(int n) {
-	int numOfRefactor = (int)((n - _capacity) / _resizeFactor)+1;//claclates how manty times to mull in resize(int) resize factor
+	int numOfRefactor = ((n - _capacity) / _resizeFactor) + (n  % _resizeFactor==0?0:1);//claclates how manty times to mull in resize(int) resize factor
 	Resize(numOfRefactor);
 }
 void Vector::push_back(const int& val) {
@@ -52,5 +52,8 @@ void Vector::push_back(const int& val) {
 }
 int Vector::pop_back() {
 	return _elements[_size--];
+
+}
+void Vector::resize(int n) {
 
 }
