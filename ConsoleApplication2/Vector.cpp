@@ -74,3 +74,24 @@ void Vector::resize(int n,const int& val) {
 	resize(n);
 	assign(val);
 }
+Vector::Vector(const Vector& vec):_capacity(vec._capacity),_size(vec._size),_resizeFactor(vec._resizeFactor) {
+	_elements = new int[vec._capacity];
+	for (int i = 0; i < _size; i++)
+	{
+		_elements[i] = vec._elements[i];
+	}
+
+}
+Vector Vector::operator=(const Vector& vec) {
+	if (&vec==this)
+	{
+		return *this;
+	}
+	this->_capacity = vec._capacity;
+	this->_resizeFactor = vec._resizeFactor;
+	this->_size = vec._size;
+	for (int i = 0; i < _size; i++)
+	{
+		_elements[i] = vec._elements[i];
+	}
+}
