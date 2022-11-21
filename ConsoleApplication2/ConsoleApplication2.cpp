@@ -177,7 +177,72 @@ void test3()
  * checks bonus part of the exercise
  * '+' '+=' '-' '-=' '<<'
  **/
+void test4()
+{
+	Vector v1(10);
+	v1.push_back(20);
+	v1.push_back(30);
+	v1.push_back(40);
 
+	Vector v2(10);
+	v2.push_back(2);
+	v2.push_back(3);
+	v2.push_back(4);
+
+	// operator +
+	Vector v3 = v1 + v2;
+	if (v3[0] != 22 || v3[1] != 33 || v3[2] != 44)
+	{
+		cout << TEST_FAILED;
+		return;
+	}
+
+	// operator -
+	v3 = v2 - v1;
+	if (v3[0] != -18 || v3[1] != -27 || v3[2] != -36)
+	{
+2		cout << TEST_FAILED;
+		return;
+	}
+
+	// operator +=
+	Vector v4(10);
+	v4.push_back(100);
+	v4.push_back(200);
+	v4.push_back(300);
+	v4 += v1;
+	if (v4[0] != 120 || v4[1] != 230 || v4[2] != 340)
+	{
+		cout << TEST_FAILED;
+		return;
+	}
+
+	// operator -=
+	Vector v5(10);
+	v5.push_back(0);
+	v5.push_back(0);
+	v5.push_back(0);
+	v5 -= v1;
+	if (v5[0] != -20 || v5[1] != -30 || v5[2] != -40)
+	{
+		cout << TEST_FAILED;
+		return;
+	}
+
+	cout << TESTS_PASSED;
+
+	cout << "\n\n" << "Testing operator <<\n" << endl;
+
+	// operator <<
+	Vector v6(10);
+	for (int i = 0; i < 10; i++)
+	{
+		v6.push_back(i + 1);
+	}
+
+
+
+}
 
 
 int main()
@@ -200,7 +265,7 @@ int main()
 	cout << "\n******************************" << endl;
 	cout << "********** Bonuses ***********" << endl;
 	cout << "******************************" << endl;
-	//test4();
+	test4();
 
 
 	system("pause");

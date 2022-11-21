@@ -112,12 +112,35 @@ int& Vector::operator[](int index) {
 	return _elements[index];
 }
 
-Vector Vector::operator+(Vector v1, Vector v2) {
-	Vector ret(v1);
-	int loopLength = v1.size() < v2.size() ? v1.size() : v2.size();
+Vector Vector::operator+(Vector v1) {
+	
+	int loopLength = v1.size() < size() ? v1.size() : size();
 	for (int i = 0; i < loopLength; i++)
 	{
-		ret[i] += v2[i];
+		this->_elements[i] += v1._elements[i];
+	}
+	return *this;
+}
+Vector Vector::operator-(Vector v1) {
+	
+	int loopLength = v1.size() < size() ? v1.size() : size();
+	for (int i = 0; i < loopLength; i++)
+	{
+		this->_elements[i] -= v1._elements[i];
+	}
+	return *this;
+}
+Vector Vector::operator+=(Vector v1) {
+	*this = *this+v1;
+	return *this;
+}
+Vector Vector::operator-=(Vector v1) {
+	Vector ret = v1;
+	int loopLength = v1.size() < size() ? v1.size() : size();
+	for (int i = 0; i < loopLength; i++)
+	{
+		this->_elements[i] -= v1._elements[i];
+		this->_elements[i] *= -1;
 	}
 	return ret;
 }

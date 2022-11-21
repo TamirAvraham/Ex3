@@ -26,7 +26,7 @@ public:
 	int& operator[](int);
 	Vector operator-=(Vector);
 	Vector operator+=(Vector);
-	Vector static operator+(Vector, Vector);
-	Vector static operator-(Vector, Vector);
+	Vector operator+( Vector);
+	Vector operator-( Vector);
 };
 
