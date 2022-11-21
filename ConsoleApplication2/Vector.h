@@ -24,5 +24,9 @@ public:
 	void assign(int);
 	Vector operator =(const Vector&);
 	int& operator[](int);
+	Vector operator-=(Vector);
+	Vector operator+=(Vector);
+	Vector static operator+(Vector, Vector);
+	Vector static operator-(Vector, Vector);
 };
 
