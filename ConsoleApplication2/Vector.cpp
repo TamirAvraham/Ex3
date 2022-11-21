@@ -9,6 +9,9 @@ int Vector::capacity()const {
 bool Vector::empty()const {
 	return _size <= 0;
 }
+int Vector::resizeFactor() const {
+	return _resizeFactor;
+}
 Vector::Vector(int n) {
 	n = n > 2 ? n : 2;
 	_capacity = n;
@@ -55,7 +58,10 @@ void Vector::push_back(const int& val) {
 	_elements[_size++] = val;
 }
 int Vector::pop_back() {
-	return _elements[_size--];
+	int minus = _size - 1;
+	int ret = minus >= 0 ? _elements[minus == 0 ? minus : minus--] : -999;
+	_size--;
+	return ret;
 
 }
 void Vector::resize(int n) {
@@ -94,4 +100,14 @@ Vector Vector::operator=(const Vector& vec) {
 	{
 		_elements[i] = vec._elements[i];
 	}
+	return *this;
+}
+
+int& Vector::operator[](int index) {
+	if (index<0||index>_size)
+	{
+		std::cerr << "Index out of range";
+		return _elements[0];
+	}
+	return _elements[index];
 }

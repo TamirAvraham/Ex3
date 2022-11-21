@@ -15,6 +15,7 @@ public:
 	int size()const;
 	int capacity()const;
 	bool empty()const;
+	int resizeFactor()const;
 	void push_back(const int&);
 	int pop_back();
 	void reserve(int);
@@ -22,5 +23,6 @@ public:
 	void resize(int,const int&);
 	void assign(int);
 	Vector operator =(const Vector&);
+	int& operator[](int);
 };
 
