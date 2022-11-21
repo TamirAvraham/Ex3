@@ -111,3 +111,13 @@ int& Vector::operator[](int index) {
 	}
 	return _elements[index];
 }
+
+Vector Vector::operator+(Vector v1, Vector v2) {
+	Vector ret(v1);
+	int loopLength = v1.size() < v2.size() ? v1.size() : v2.size();
+	for (int i = 0; i < loopLength; i++)
+	{
+		ret[i] += v2[i];
+	}
+	return ret;
+}
